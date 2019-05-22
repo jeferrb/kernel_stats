@@ -1,3 +1,6 @@
+#!/bin/bash
+
+cd ~/NPB3.3.1/NPB3.3-MPI/
 cat config/make.def.template | \
 sed "s/MPIF77 = f77/MPIF77 = mpif90/g" | \
 sed "s/MPICC = cc/MPICC = mpicc/g" | \
@@ -14,10 +17,10 @@ for bench in bt cg ep ft is lu mg sp; do
 done
 
 
-cd nas/NPB3.3.1/NPB3.3-MPI
-gcc -c kernel_stats.c
+cd ~/NPB3.3.1/NPB3.3-MPI
 mkdir -p ../bin
-mv kernel_stats.o ../bin
+cd bin
+gcc -c ~/kernel_stats/kernel_stats.c
 cd ../
 
 make suite
